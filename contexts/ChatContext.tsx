@@ -158,6 +158,20 @@ export function ChatProvider({ children }: { children: React.ReactNode }) {
       return;
     }
 
+    // Create optimistic user message to show immediately
+    const optimisticUserMessage = {
+      id: `temp-${Date.now()}`,
+      session_id: currentSession.id,
+      role: "user" as const,
+      content,
+      input_tokens: 0,
+      output_tokens: 0,
+      created_at: new Date().toISOString(),
+    };
+
+    // Add user message to UI immediately
+    setMessages((prev) => [...prev, optimisticUserMessage]);
+
     try {
       setIsLoading(true);
       setError(null);
@@ -182,9 +196,9 @@ export function ChatProvider({ children }: { children: React.ReactNode }) {
         throw new Error(data.error || "Failed to send message");
       }
 
-      // Add messages to UI
+      // Replace optimistic message with real one and add assistant message
       setMessages((prev) => [
-        ...prev,
+        ...prev.filter((m) => m.id !== optimisticUserMessage.id),
         data.userMessage,
         data.assistantMessage,
       ]);

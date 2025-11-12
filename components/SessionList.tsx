@@ -99,8 +99,8 @@ export function SessionList() {
                   className={cn(
                     "group relative flex items-start gap-2 p-3 rounded-lg cursor-pointer transition-colors border",
                     isActive
-                      ? "bg-primary/10 border-primary/50"
-                      : "hover:bg-accent border-transparent"
+                      ? "bg-accent"
+                      : "hover:bg-accent/50 border-transparent"
                   )}
                   onClick={() => handleSelectSession(session.id)}
                 >

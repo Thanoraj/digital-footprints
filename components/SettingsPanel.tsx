@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { Settings } from "lucide-react";
 import { useSettingsContext } from "@/contexts/SettingsContext";
 import {
   Select,
@@ -26,11 +25,9 @@ export function SettingsPanel() {
 
   return (
     <div className="space-y-4">
-      <h3 className="font-semibold flex items-center gap-2">
-        <Settings className="h-4 w-4" />
-        Settings
-      </h3>
-      <p className="text-xs text-muted-foreground">Per 1,000 tokens</p>
+      <p className="text-xs text-muted-foreground">
+        These settings affect environmental calculations for this session (per 1,000 tokens)
+      </p>
 
       <div className="space-y-3">
         <div className="space-y-2">
