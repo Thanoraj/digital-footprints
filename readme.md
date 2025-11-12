@@ -1,74 +1,231 @@
-Methodology: Estimating the Environmental Footprint of an AI Chat
+# 🍃 Digital Footprints
 
-This document explains the estimation model used in the Streamlit application. It is crucial to understand that these are estimates for awareness and educational purposes, not precise accounting figures.
+Track the environmental impact of your AI conversations in real-time. Digital Footprints is a Next.js PWA that visualizes the carbon emissions, energy consumption, and water usage of AI chat interactions.
 
-The true cost is highly variable and depends on many factors not included here. However, this model provides a solid, research-backed foundation to visualize the impact.
+## Features
 
-We will calculate three key metrics per query:
+- **Real-time Environmental Metrics**: Track energy (Wh), carbon emissions (gCO₂e), and water usage (L) per session
+- **Multiple Chat Sessions**: Organize conversations into separate sessions with independent metrics
+- **Persistent Storage**: All data saved to Supabase for cross-device access
+- **Customizable Settings**: Adjust model size, energy mix, and water factors per session
+- **Modern UI**: Built with Next.js 15, React 19, Tailwind CSS, and shadcn/ui
+- **Mobile Responsive**: Fully responsive design with PWA support
+- **Offline Capable**: Progressive Web App with service worker caching
 
-Energy (in Watt-hours, Wh)
+## Tech Stack
 
-Carbon (in grams of CO2-equivalent, gCO2e)
+- **Frontend**: Next.js 15 (App Router), React 19, TypeScript, Tailwind CSS
+- **UI Components**: shadcn/ui (Radix primitives)
+- **Backend**: Next.js API Routes
+- **Database**: Supabase (PostgreSQL)
+- **AI**: Google Gemini AI (gemini-2.0-flash-exp)
+- **PWA**: next-pwa with offline support
+- **Testing**: Jest, React Testing Library, Cypress
 
-Water (in Liters, L)
+## Prerequisites
 
-1. Energy Calculation (Wh per Query)
+- Node.js 18+ and npm/yarn/pnpm
+- Supabase account and project
+- Google AI API key (Gemini)
 
-It's nearly impossible to know the exact energy of a single API call. Instead, we use an average, estimated value from academic research as our baseline.
+## Quick Start
 
-Baseline: Research varies, but studies and estimates (like those from Alex de Vries or Luccioni, et al.) place a single generative AI query in the range of 0.5 to 5.0 Watt-hours (Wh). This is significantly more than a traditional Google search (often cited around 0.3 Wh).
+### 1. Clone the Repository
 
-Our Model: We will use a "Model Size" slider to approximate this.
+```bash
+git clone <repository-url>
+cd digital-footprints
+```
 
-Small (Demo): 0.5 Wh
+### 2. Install Dependencies
 
-Medium (e.g., GPT-3.5-level): 1.5 Wh
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+```
 
-Large (e.g., GPT-4-level): 4.0 Wh
+### 3. Set Up Environment Variables
 
-Formula:
-Total Energy = Number of Queries * Energy_Per_Query_Wh
+Create a `.env.local` file:
 
-2. Carbon Calculation (gCO2e per Query)
+```env
+NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+GOOGLE_API_KEY=your_google_api_key
+```
 
-The carbon footprint is not about the energy used; it's about how that energy was generated. This is the most critical factor.
+**📚 For detailed setup instructions, see [ENVIRONMENT_SETUP.md](ENVIRONMENT_SETUP.md)**
 
-Carbon Intensity (gCO2e / kWh): This metric defines how "dirty" the electricity grid is. We will use a slider for "Data Center Energy Mix" with values from sources like the IEA and EPA:
+**⚠️ Migrating from Streamlit?** Environment variable names have changed. See the migration warning in the setup guide.
 
-Renewables (Hydro/Solar/Wind): ~20 gCO2e / kWh (Not zero, due to manufacturing and transmission)
+### 4. Set Up Database
 
-Global Average Grid: ~450 gCO2e / kWh
+Run the SQL migration in your Supabase SQL editor:
 
-US Average Grid: ~400 gCO2e / kWh
+```bash
+# Copy contents of supabase/schema.sql to Supabase SQL Editor and execute
+```
 
-Coal-Powered Grid: ~820 gCO2e / kWh
+### 5. Run Development Server
 
-Formula:
-Carbon (gCO2e) = Energy (Wh) / 1000 * Carbon_Intensity (gCO2e / kWh)
+```bash
+npm run dev
+```
 
-Note: We divide by 1000 to convert our query's Wh to kWh to match the intensity metric.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-Example (Medium Model on US Grid):
-1.5 Wh / 1000 * 400 gCO2e/kWh = 0.6 gCO2e per query
+### Troubleshooting
 
-3. Water Calculation (L per Query)
+If you encounter errors (like "Failed to create session"), see [TROUBLESHOOTING.md](TROUBLESHOOTING.md) for detailed solutions.
 
-The "hidden" water cost is for data center cooling. AI servers run incredibly hot and require massive amounts of water (either directly for evaporative cooling or indirectly via the power plants generating their electricity).
+## Project Structure
 
-Water Usage Factor (L / kWh): This is the amount of water consumed per kilowatt-hour of energy used. Google's 2023 environmental report states an average of 1.1 Liters per kWh for its data centers. We will use this as a configurable default.
+```
+digital-footprints/
+├── app/                    # Next.js App Router
+│   ├── api/               # API routes
+│   │   ├── chat/         # Chat endpoint (Gemini AI)
+│   │   └── sessions/     # Session CRUD
+│   ├── layout.tsx        # Root layout
+│   ├── page.tsx          # Home page
+│   └── globals.css       # Global styles
+├── components/            # React components
+│   ├── ui/               # shadcn/ui components
+│   ├── SessionList.tsx   # Session sidebar
+│   ├── ChatInterface.tsx # Chat UI
+│   ├── MetricsPanel.tsx  # Metrics display
+│   └── SettingsPanel.tsx # Settings controls
+├── contexts/             # React Context providers
+│   ├── ChatContext.tsx   # Chat state management
+│   └── SettingsContext.tsx # Settings management
+├── lib/                  # Utilities and helpers
+│   ├── supabase/        # Supabase client & queries
+│   ├── types.ts         # TypeScript definitions
+│   ├── constants.ts     # App constants
+│   └── utils.ts         # Utility functions
+├── supabase/            # Database schema
+│   ├── schema.sql       # Complete schema
+│   └── migrations/      # Migration files
+└── public/              # Static assets
+    ├── manifest.json    # PWA manifest
+    └── icons/          # App icons
+```
 
-Formula:
-Water (L) = Energy (Wh) / 1000 * Water_Usage_Factor (L / kWh)
+## Environment Variables
 
-Example (Medium Model @ 1.1 L/kWh):
-1.5 Wh / 1000 * 1.1 L/kWh = 0.00165 L per query
+| Variable | Description | Required |
+|----------|-------------|----------|
+| `GOOGLE_API_KEY` | Google Gemini AI API key | Yes |
+| `NEXT_PUBLIC_SUPABASE_URL` | Supabase project URL | Yes |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase anonymous key | Yes |
 
-This seems tiny, but over billions of queries, it adds up to millions of liters.
+## Scripts
 
-Conclusion
+```bash
+npm run dev          # Start development server
+npm run build        # Build for production
+npm run start        # Start production server
+npm run lint         # Run ESLint
+npm run test         # Run Jest tests
+npm run test:coverage # Run tests with coverage
+npm run cypress      # Open Cypress E2E tests
+npm run type-check   # Run TypeScript type checking
+```
 
-This model demonstrates that the most significant levers for reducing AI's environmental impact are:
+## Testing
 
-Energy Efficiency: Building smaller, more efficient models.
+### Unit Tests
 
-Clean Energy: Powering data centers with 100% renewable energy, which dramatically slashes the carbon footprint even if the energy use remains high.
+```bash
+npm run test
+```
+
+Runs Jest tests with React Testing Library. Target: ≥90% coverage.
+
+### E2E Tests
+
+```bash
+npm run cypress
+```
+
+Runs Cypress end-to-end tests.
+
+## Deployment
+
+### Vercel (Recommended)
+
+1. Push code to GitHub
+2. Import project in Vercel
+3. Add environment variables
+4. Deploy
+
+### Other Platforms
+
+Build the production bundle:
+
+```bash
+npm run build
+npm run start
+```
+
+Deploy the `.next` folder and `public` assets.
+
+## Environmental Metrics Methodology
+
+### Energy Calculation
+
+Energy per 1000 tokens (kilotoken):
+- Small Model: 0.005 Wh/kToken
+- Medium Model (GPT-3.5/Flash): 0.025 Wh/kToken
+- Large Model (GPT-4/Ultra): 0.09 Wh/kToken
+
+### Carbon Calculation
+
+Carbon intensity by grid:
+- Renewables: 20 gCO₂e/kWh
+- Global Average: 450 gCO₂e/kWh
+- US Average: 400 gCO₂e/kWh
+- Coal-Powered: 820 gCO₂e/kWh
+
+Formula: `Carbon = (Energy_Wh / 1000) × Carbon_Intensity`
+
+### Water Calculation
+
+Default: 1.1 L/kWh (based on Google's 2023 data center report)
+
+Formula: `Water = (Energy_Wh / 1000) × Water_Factor`
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Write/update tests
+5. Submit a pull request
+
+## License
+
+MIT License - see LICENSE file for details
+
+## Acknowledgments
+
+- Environmental impact calculations based on academic research
+- Inspired by the need for transparency in AI environmental costs
+- Built with modern web technologies for maximum performance
+
+## Support
+
+**Having issues?**
+1. Check [TROUBLESHOOTING.md](TROUBLESHOOTING.md) for common problems and solutions
+2. Review [ENVIRONMENT_SETUP.md](ENVIRONMENT_SETUP.md) for setup instructions
+3. Look at server console logs for detailed error messages (marked with ❌)
+4. Open an issue on GitHub with error details
+
+For questions or contributions, please open an issue on GitHub.
+
+---
+
+Made with 🍃 for a more sustainable AI future
