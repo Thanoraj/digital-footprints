@@ -5,6 +5,8 @@ import { User, Bot } from "lucide-react";
 import { useChatContext } from "@/contexts/ChatContext";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 export function MessageList() {
   const { messages, isLoading } = useChatContext();
@@ -57,9 +59,17 @@ export function MessageList() {
                   : "bg-card border-border"
               )}
             >
-              <p className="text-sm whitespace-pre-wrap break-words">
-                {message.content}
-              </p>
+              {message.role === "assistant" ? (
+                <div className="prose prose-sm dark:prose-invert max-w-none prose-p:my-2 prose-ul:my-2 prose-li:my-1">
+                  <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                    {message.content}
+                  </ReactMarkdown>
+                </div>
+              ) : (
+                <p className="text-sm whitespace-pre-wrap break-words">
+                  {message.content}
+                </p>
+              )}
             </div>
 
             {message.role === "user" && (
