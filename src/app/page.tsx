@@ -10,12 +10,6 @@ export default function Home() {
   const [isConfigured, setIsConfigured] = useState<boolean | null>(null);
 
   useEffect(() => {
-    // Check if environment variables are configured
-    const hasSupabase = !!(
-      process.env.NEXT_PUBLIC_SUPABASE_URL && 
-      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-    );
-    
     // For client-side check
     const envCheck = async () => {
       try {

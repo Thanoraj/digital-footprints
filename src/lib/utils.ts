@@ -1,6 +1,6 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
-import type { ModelSize, EnergyMix, CalculatedMetrics, Settings } from "./types";
+import type { CalculatedMetrics, Settings } from "./types";
 import {
   ENERGY_PER_KILOTOKEN_WH,
   CARBON_INTENSITY_G_PER_KWH,

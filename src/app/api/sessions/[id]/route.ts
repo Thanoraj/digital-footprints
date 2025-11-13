@@ -11,7 +11,7 @@ import type { UpdateSessionRequest } from "@/lib/types";
  * Get a specific session by ID
  */
 export async function GET(
-  request: NextRequest,
+  _request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
@@ -70,7 +70,7 @@ export async function PATCH(
  * Delete a session
  */
 export async function DELETE(
-  request: NextRequest,
+  _request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {

@@ -6,7 +6,7 @@ import { loadChatHistory } from "@/lib/supabase/queries";
  * Get all messages for a session
  */
 export async function GET(
-  request: NextRequest,
+  _request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {

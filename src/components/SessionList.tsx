@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Plus, MessageSquare, Trash2, RefreshCw } from "lucide-react";
+import { Plus, MessageSquare, Trash2 } from "lucide-react";
 import { useChatContext } from "@/contexts/ChatContext";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -20,7 +20,6 @@ export function SessionList() {
     createSession,
     selectSession,
     deleteSession,
-    loadSessions,
   } = useChatContext();
 
   const handleNewSession = async () => {
