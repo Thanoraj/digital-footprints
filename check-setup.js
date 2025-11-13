@@ -10,7 +10,7 @@
 const fs = require('fs');
 const path = require('path');
 
-console.log('\n🔍 Digital Footprints - Setup Verification\n');
+console.log('\n🔍 Ecomate - Setup Verification\n');
 console.log('=' .repeat(50));
 
 let hasErrors = false;
@@ -53,7 +53,7 @@ if (!fs.existsSync(envPath)) {
       console.log(`   This is required for: ${description}`);
       hasErrors = true;
     } else if (envVars[varName].includes('your-') || envVars[varName].includes('your_')) {
-      console.log(`⚠️  WARN: ${varName} has placeholder value`);
+      console.log(`  WARN: ${varName} has placeholder value`);
       console.log(`   Replace with your actual ${description}`);
       hasWarnings = true;
     } else {
@@ -62,22 +62,22 @@ if (!fs.existsSync(envPath)) {
       // Additional validation
       if (varName === 'NEXT_PUBLIC_SUPABASE_URL') {
         if (!envVars[varName].startsWith('https://')) {
-          console.log('   ⚠️  WARN: URL should start with https://');
+          console.log('     WARN: URL should start with https://');
           hasWarnings = true;
         }
         if (!envVars[varName].includes('supabase.co')) {
-          console.log('   ⚠️  WARN: URL should contain supabase.co');
+          console.log('     WARN: URL should contain supabase.co');
           hasWarnings = true;
         }
       }
       
       if (varName === 'NEXT_PUBLIC_SUPABASE_ANON_KEY' && envVars[varName].length < 100) {
-        console.log('   ⚠️  WARN: Key seems too short (should be ~200+ characters)');
+        console.log('     WARN: Key seems too short (should be ~200+ characters)');
         hasWarnings = true;
       }
       
       if (varName === 'GOOGLE_API_KEY' && envVars[varName].length < 30) {
-        console.log('   ⚠️  WARN: Key seems too short');
+        console.log('     WARN: Key seems too short');
         hasWarnings = true;
       }
     }
@@ -89,7 +89,7 @@ if (!fs.existsSync(envPath)) {
   let foundOldVars = false;
   oldVars.forEach(oldVar => {
     if (envVars[oldVar]) {
-      console.log(`⚠️  WARN: Found old variable: ${oldVar}`);
+      console.log(`  WARN: Found old variable: ${oldVar}`);
       foundOldVars = true;
       hasWarnings = true;
     }
@@ -115,7 +115,7 @@ if (!fs.existsSync(packageJsonPath)) {
   
   const nodeModulesPath = path.join(__dirname, 'node_modules');
   if (!fs.existsSync(nodeModulesPath)) {
-    console.log('⚠️  WARN: node_modules not found');
+    console.log('  WARN: node_modules not found');
     console.log('   Run: pnpm install (or npm install)');
     hasWarnings = true;
   } else {
@@ -127,7 +127,7 @@ if (!fs.existsSync(packageJsonPath)) {
 console.log('\n🗄️  Checking database schema files...');
 const schemaPath = path.join(__dirname, 'supabase', 'schema.sql');
 if (!fs.existsSync(schemaPath)) {
-  console.log('⚠️  WARN: supabase/schema.sql not found');
+  console.log('  WARN: supabase/schema.sql not found');
   hasWarnings = true;
 } else {
   console.log('✅ PASS: supabase/schema.sql exists');
@@ -138,7 +138,7 @@ if (!fs.existsSync(schemaPath)) {
 console.log('\n⚙️  Checking Next.js configuration...');
 const nextConfigPath = path.join(__dirname, 'next.config.ts');
 if (!fs.existsSync(nextConfigPath)) {
-  console.log('⚠️  WARN: next.config.ts not found');
+  console.log('  WARN: next.config.ts not found');
   hasWarnings = true;
 } else {
   console.log('✅ PASS: next.config.ts exists');
@@ -146,7 +146,7 @@ if (!fs.existsSync(nextConfigPath)) {
 
 // Final summary
 console.log('\n' + '='.repeat(50));
-console.log('\n📊 SUMMARY\n');
+console.log('\n SUMMARY\n');
 
 if (!hasErrors && !hasWarnings) {
   console.log('🎉 All checks passed! Your environment is properly configured.');
@@ -159,7 +159,7 @@ if (!hasErrors && !hasWarnings) {
     console.log('❌ Found critical errors that need to be fixed');
   }
   if (hasWarnings) {
-    console.log('⚠️  Found warnings that should be reviewed');
+    console.log('  Found warnings that should be reviewed');
   }
   console.log('\nNext steps:');
   console.log('1. Fix the issues listed above');

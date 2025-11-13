@@ -6,7 +6,7 @@ const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 // For development without Supabase, create a dummy client
 if (!supabaseUrl || !supabaseAnonKey) {
   console.warn(
-    "⚠️ Missing Supabase environment variables. Using mock client for development."
+    " Missing Supabase environment variables. Using mock client for development."
   );
   console.warn("Please set NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY in .env.local");
 }

@@ -1,6 +1,6 @@
-# 🍃 Digital Footprints
+#  Ecomate
 
-Track the environmental impact of your AI conversations in real-time. Digital Footprints is a Next.js PWA that visualizes the carbon emissions, energy consumption, and water usage of AI chat interactions.
+Track the environmental impact of your AI conversations in real-time. Ecomate is a Next.js PWA that visualizes the carbon emissions, energy consumption, and water usage of AI chat interactions.
 
 ## Features
 
@@ -59,7 +59,7 @@ GOOGLE_API_KEY=your_google_api_key
 
 **📚 For detailed setup instructions, see [ENVIRONMENT_SETUP.md](ENVIRONMENT_SETUP.md)**
 
-**⚠️ Migrating from Streamlit?** Environment variable names have changed. See the migration warning in the setup guide.
+** Migrating from Streamlit?** Environment variable names have changed. See the migration warning in the setup guide.
 
 ### 4. Set Up Database
 
@@ -228,4 +228,4 @@ For questions or contributions, please open an issue on GitHub.
 
 ---
 
-Made with 🍃 for a more sustainable AI future
+Made with  for a more sustainable AI future

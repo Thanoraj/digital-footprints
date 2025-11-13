@@ -23,7 +23,7 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key-here
 GOOGLE_API_KEY=your-google-api-key-here
 ```
 
-**⚠️ Important:** Variable names must be exact. If migrating from Streamlit:
+** Important:** Variable names must be exact. If migrating from Streamlit:
 - ❌ `SUPABASE_URL` → ✅ `NEXT_PUBLIC_SUPABASE_URL`
 - ❌ `SUPABASE_KEY` → ✅ `NEXT_PUBLIC_SUPABASE_ANON_KEY`
 
@@ -106,7 +106,7 @@ pnpm dev -- -p 3001
 
 **Symptoms:**
 - Setup banner shows in the UI
-- Console shows: `⚠️ Missing Supabase environment variables`
+- Console shows: ` Missing Supabase environment variables`
 
 **Solution:**
 1. Verify `.env.local` exists in project root

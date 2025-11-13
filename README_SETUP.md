@@ -1,4 +1,4 @@
-# Digital Footprints 🍃
+# Ecomate 
 
 A Streamlit application that visualizes the environmental impact of AI chat interactions in real-time, tracking energy consumption, carbon emissions, and water usage with persistent chat history.
 

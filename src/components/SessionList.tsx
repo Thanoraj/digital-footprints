@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { Card } from "@/components/ui/card";
-import { formatRelativeTime } from "@/lib/utils";
 import { cn } from "@/lib/utils";
 import { SetupBanner } from "@/components/SetupBanner";
 
@@ -34,19 +33,14 @@ export function SessionList() {
 
   const handleDeleteSession = async (sessionId: string, event: React.MouseEvent) => {
     event.stopPropagation();
-    if (confirm("Are you sure you want to delete this session?")) {
-      await deleteSession(sessionId);
-    }
+    await deleteSession(sessionId);
   };
 
   return (
     <Card className="flex h-full flex-col border-r">
       <div className="p-2">
-        <div className="flex items-center justify-between gap-2 mb-4">
-          <h2 className="text-lg font-semibold flex items-center gap-2">
-            <span className="text-2xl">🍃</span>
-            Digital Footprints
-          </h2>
+        <div className="flex items-center justify-between gap-2 mb-4 h-20">
+          <h2 className=" font-semibold flex items-center gap-2 text-2xl pl-2">Ecomate</h2>
         </div>
 
         <div className="flex">
@@ -54,7 +48,7 @@ export function SessionList() {
             data-testid="new-session-button"
             onClick={handleNewSession}
             disabled={isLoading}
-            className="flex-1"
+            className="flex-1 h-12"
             size="sm"
           >
             <Plus className="h-4 w-4" />
@@ -78,15 +72,17 @@ export function SessionList() {
 
       <ScrollArea className="flex-1">
         <div className="p-2 space-y-1">
-          {error && (
+          {/* {error && (
             <div className="p-3 m-2 text-xs bg-destructive/10 text-destructive rounded-lg border border-destructive/20">
               {error}
             </div>
-          )}
-          
+          )} */}
+
           {sessions.length === 0 ? (
             <div className="p-4 text-center text-sm text-muted-foreground">
-              {error ? "Configure your environment to get started" : "No sessions yet. Create one to get started!"}
+              {error
+                ? "Configure your environment to get started"
+                : "No sessions yet. Create one to get started!"}
             </div>
           ) : (
             sessions.map((session) => {
@@ -96,10 +92,8 @@ export function SessionList() {
                   key={session.id}
                   data-testid={`session-item-${session.id}`}
                   className={cn(
-                    "group relative flex items-start gap-2 p-3 rounded-lg cursor-pointer transition-colors border",
-                    isActive
-                      ? "bg-accent"
-                      : "hover:bg-accent/50 border-transparent"
+                    "group relative flex items-start gap-2 p-3 rounded-lg cursor-pointer transition-colors border h-12",
+                    isActive ? "bg-accent" : "hover:bg-accent/50 border-transparent"
                   )}
                   onClick={() => handleSelectSession(session.id)}
                 >
@@ -111,9 +105,9 @@ export function SessionList() {
                   />
                   <div className="flex-1 min-w-0">
                     <p className="text-sm font-medium truncate">{session.title}</p>
-                    <p className="text-xs text-muted-foreground">
+                    {/* <p className="text-xs text-muted-foreground">
                       {formatRelativeTime(session.updated_at)}
-                    </p>
+                    </p> */}
                   </div>
                   {!isActive && (
                     <Button
@@ -135,5 +129,3 @@ export function SessionList() {
     </Card>
   );
 }
-
-

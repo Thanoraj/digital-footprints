@@ -5,7 +5,7 @@ export default function Offline() {
         <div className="text-6xl">🌐</div>
         <h1 className="text-2xl font-bold">You're Offline</h1>
         <p className="text-muted-foreground max-w-md">
-          Digital Footprints requires an internet connection to function. 
+          Ecomate requires an internet connection to function. 
           Please check your connection and try again.
         </p>
       </div>

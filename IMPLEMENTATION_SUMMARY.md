@@ -333,7 +333,7 @@ The application is now:
 - **More installable**: Full PWA support
 - **More testable**: Comprehensive test suite
 
-Happy coding! 🍃
+Happy coding! 
 
 ---
 

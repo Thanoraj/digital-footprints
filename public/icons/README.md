@@ -1,6 +1,6 @@
 # PWA Icons
 
-This directory contains the Progressive Web App icons for Digital Footprints.
+This directory contains the Progressive Web App icons for Ecomate.
 
 ## Required Sizes
 
@@ -17,7 +17,7 @@ Generate icons in the following sizes:
 ## Design Guidelines
 
 - **Theme**: Eco-friendly, green technology
-- **Icon Style**: Leaf emoji 🍃 or stylized leaf design
+- **Icon Style**: Leaf emoji  or stylized leaf design
 - **Background**: White or transparent
 - **Primary Color**: Green (#22c55e)
 

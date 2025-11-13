@@ -1,4 +1,4 @@
-// Type definitions for Digital Footprints application
+// Type definitions for Ecomate application
 
 export type ModelSize = 
   | "Small (Demo)"

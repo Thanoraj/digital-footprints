@@ -36,7 +36,7 @@ export default function Home() {
     return (
       <div className="flex h-screen w-screen items-center justify-center">
         <div className="text-center space-y-3">
-          <div className="text-6xl animate-bounce">🍃</div>
+          <div className="text-6xl animate-bounce"></div>
           <p className="text-muted-foreground">Loading...</p>
         </div>
       </div>
@@ -79,8 +79,8 @@ export default function Home() {
       <div className="md:hidden h-full flex flex-col">
         <div className="flex-none h-16 border-b px-4 flex items-center justify-between bg-card">
           <h1 className="text-lg font-semibold flex items-center gap-2">
-            <span className="text-2xl">🍃</span>
-            Digital Footprints
+            <span className="text-2xl"></span>
+            Ecomate
           </h1>
         </div>
         
@@ -92,11 +92,11 @@ export default function Home() {
         <div className="flex-none border-t bg-card">
           <div className="flex justify-around p-2">
             <button className="flex flex-col items-center gap-1 px-4 py-2 text-xs">
-              <span>💬</span>
+              <span></span>
               <span>Chat</span>
             </button>
             <button className="flex flex-col items-center gap-1 px-4 py-2 text-xs opacity-50">
-              <span>📊</span>
+              <span></span>
               <span>Metrics</span>
             </button>
             <button className="flex flex-col items-center gap-1 px-4 py-2 text-xs opacity-50">

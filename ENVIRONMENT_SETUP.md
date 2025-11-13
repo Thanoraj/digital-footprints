@@ -47,7 +47,7 @@ GOOGLE_API_KEY=your-google-api-key-here
 
 ## Important Notes
 
-⚠️ **Environment Variable Names Have Changed**
+ **Environment Variable Names Have Changed**
 
 If you're migrating from the old Streamlit version:
 
@@ -75,7 +75,7 @@ This will check:
 - ✅ Variable names are correct (not old Streamlit names)
 - ✅ Dependencies are installed
 
-Fix any ❌ errors or ⚠️ warnings before proceeding.
+Fix any ❌ errors or  warnings before proceeding.
 
 ## Running the Application
 

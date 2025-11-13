@@ -23,7 +23,7 @@ The app will work without Supabase - it just won't persist data between sessions
 3. **What you'll see**:
    - ✅ 3-column layout working
    - ✅ Chat functionality working
-   - ⚠️ "Database not connected" warnings (expected)
+   -  "Database not connected" warnings (expected)
    - ❌ Chat history won't persist between sessions
 
 ### Option 2: Full Setup with Persistence
@@ -117,7 +117,7 @@ FOR ALL USING (true) WITH CHECK (true);
 - ✅ **Chat Input**: Fixed Streamlit API error
 - ✅ **Dependencies**: Supabase package installed
 - ✅ **Graceful Fallback**: Works without database
-- ⚠️ **Database**: Tables need to be created in Supabase
+-  **Database**: Tables need to be created in Supabase
 
 ## ✨ New Features
 

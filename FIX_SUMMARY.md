@@ -60,7 +60,7 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key-here
 GOOGLE_API_KEY=your-google-api-key-here
 ```
 
-**⚠️ Important Notes:**
+** Important Notes:**
 - File must be named exactly `.env.local`
 - Must be in the project root directory (same level as `package.json`)
 - Variable names must start with `NEXT_PUBLIC_` for Supabase
@@ -180,10 +180,10 @@ See [TROUBLESHOOTING.md](TROUBLESHOOTING.md) for detailed solutions to common is
 - ✅ Created this fix summary
 
 ### What You Need to Do
-- ⚠️ Create `.env.local` with correct variable names
-- ⚠️ Get Supabase and Google AI credentials
-- ⚠️ Run database schema if not already done
-- ⚠️ Restart dev server
+-  Create `.env.local` with correct variable names
+-  Get Supabase and Google AI credentials
+-  Run database schema if not already done
+-  Restart dev server
 
 ## Quick Checklist
 

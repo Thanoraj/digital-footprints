@@ -1,6 +1,6 @@
 # Supabase Database Setup Guide
 
-This guide will help you set up the required Supabase tables for the Digital Footprints application.
+This guide will help you set up the required Supabase tables for the Ecomate application.
 
 ## Prerequisites
 

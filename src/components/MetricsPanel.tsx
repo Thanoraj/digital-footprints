@@ -26,7 +26,7 @@ export function MetricsPanel() {
         <CardHeader>
           <CardTitle className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <span className="text-2xl">📊</span>
+              <span className="text-2xl"></span>
               Environmental Impact
             </div>
           </CardTitle>
@@ -54,7 +54,7 @@ export function MetricsPanel() {
         <div className="flex items-center justify-between">
           <div className="space-y-1">
             <CardTitle className="flex items-center gap-2">
-              <span className="text-2xl">📊</span>
+              <span className="text-2xl"></span>
               Session Metrics
             </CardTitle>
             <p className="text-sm text-muted-foreground">
@@ -64,7 +64,6 @@ export function MetricsPanel() {
           <Dialog open={settingsOpen} onOpenChange={setSettingsOpen}>
             <DialogTrigger asChild>
               <Button
-                variant="outline"
                 size="icon"
                 data-testid="settings-button"
                 className="flex-shrink-0"

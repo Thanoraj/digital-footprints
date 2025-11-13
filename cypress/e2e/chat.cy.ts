@@ -1,10 +1,10 @@
-describe('Digital Footprints E2E Tests', () => {
+describe('Ecomate E2E Tests', () => {
   beforeEach(() => {
     cy.visit('/');
   });
 
   it('should load the application', () => {
-    cy.contains('Digital Footprints').should('be.visible');
+    cy.contains('Ecomate').should('be.visible');
   });
 
   it('should create a new session', () => {
@@ -71,7 +71,7 @@ describe('Digital Footprints E2E Tests', () => {
 
   it('should be responsive on mobile', () => {
     cy.viewport('iphone-x');
-    cy.contains('Digital Footprints').should('be.visible');
+    cy.contains('Ecomate').should('be.visible');
     cy.get('[data-testid="chat-input"]').should('be.visible');
   });
 });

@@ -97,7 +97,7 @@ export function ChatInput() {
     <div className="">
       {error && (
         <div className="px-4 pt-3 pb-2">
-          <div className="text-xs bg-destructive/10 text-destructive p-2 rounded border border-destructive/20">
+          <div className="text-xs bg-destructive p-2 rounded">
             {error}
           </div>
         </div>
@@ -112,12 +112,12 @@ export function ChatInput() {
             onKeyDown={handleKeyDown}
             placeholder={
               currentSession
-                ? "What's on your mind? (Shift+Enter for new line)"
+                ? "What's on your mind?"
                 : "Select or create a session to start chatting"
             }
             disabled={isLoading || !currentSession}
             maxLength={MAX_MESSAGE_LENGTH}
-            className="flex-1 max-h-[192px] h-auto min-h-[0] resize-none overflow-y-auto"
+            className="flex-1 max-h-[192px] h-auto min-h-[40px] resize-none overflow-y-auto"
             rows={1}
           />
           <Button
@@ -134,7 +134,7 @@ export function ChatInput() {
         {/* Real-time environmental impact preview */}
         {input.trim() && currentSession && (
           <div className="text-xs text-muted-foreground text-center pt-2 px-1 animate-fade-in">
-            🌿 {formatNumber(estimatedImpact.carbon_gco2, 6)}g CO₂ will be emitted from this message - about the same as{" "}
+            {formatNumber(estimatedImpact.carbon_gco2, 6)}g CO₂ will be emitted from this message - about the same as{" "}
             {getComparison(estimatedImpact.carbon_gco2)}.
           </div>
         )}

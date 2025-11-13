@@ -10,8 +10,8 @@ export function ChatInterface() {
     <Card className="h-full flex flex-col">
       <CardHeader className="flex-shrink-0">
         <CardTitle className="flex items-center gap-2">
-          <span className="text-2xl">💬</span>
-          Chat
+          <span className="text-2xl"></span>
+          
         </CardTitle>
       </CardHeader>
 

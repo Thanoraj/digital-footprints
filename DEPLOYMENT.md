@@ -1,6 +1,6 @@
 # Deployment Guide
 
-Complete guide for deploying Digital Footprints to production.
+Complete guide for deploying Ecomate to production.
 
 ## Prerequisites
 
@@ -291,7 +291,7 @@ Add to `app/layout.tsx`:
 
 ### Environment Variables
 
-⚠️ **NEVER commit `.env.local` to git**
+ **NEVER commit `.env.local` to git**
 
 - Keep secrets in platform environment variables
 - Use different keys for dev/prod

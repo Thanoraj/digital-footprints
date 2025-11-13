@@ -8,6 +8,7 @@ interface ChatContextType {
   currentSession: ChatSession | null;
   messages: Message[];
   isLoading: boolean;
+  isSessionLoading: boolean;
   error: string | null;
   loadSessions: () => Promise<void>;
   createSession: (request?: CreateSessionRequest) => Promise<void>;
@@ -24,12 +25,13 @@ export function ChatProvider({ children }: { children: React.ReactNode }) {
   const [currentSession, setCurrentSession] = useState<ChatSession | null>(null);
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isSessionLoading, setIsSessionLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   // Load all sessions
   const loadSessions = useCallback(async () => {
     try {
-      setIsLoading(true);
+      setIsSessionLoading(true);
       setError(null);
       const response = await fetch("/api/sessions");
       const data = await response.json();
@@ -43,14 +45,14 @@ export function ChatProvider({ children }: { children: React.ReactNode }) {
       setError(err instanceof Error ? err.message : "Failed to load sessions");
       console.error("Error loading sessions:", err);
     } finally {
-      setIsLoading(false);
+      setIsSessionLoading(false);
     }
   }, []);
 
   // Select a session and load its messages
   const selectSession = useCallback(async (sessionId: string) => {
     try {
-      setIsLoading(true);
+      setIsSessionLoading(true);
       setError(null);
 
       // Load session details
@@ -76,14 +78,14 @@ export function ChatProvider({ children }: { children: React.ReactNode }) {
       setError(err instanceof Error ? err.message : "Failed to select session");
       console.error("Error selecting session:", err);
     } finally {
-      setIsLoading(false);
+      setIsSessionLoading(false);
     }
   }, []);
 
   // Create a new session
   const createSession = useCallback(async (request: CreateSessionRequest = {}) => {
     try {
-      setIsLoading(true);
+      setIsSessionLoading(true);
       setError(null);
       const response = await fetch("/api/sessions", {
         method: "POST",
@@ -96,7 +98,7 @@ export function ChatProvider({ children }: { children: React.ReactNode }) {
       if (!response.ok) {
         // Check if it's a configuration error
         if (data.error && data.error.includes('not configured')) {
-          setError("⚠️ Please set up your .env.local file with Supabase credentials. See .env.local.example for details.");
+          setError(" Please set up your .env.local file with Supabase credentials. See .env.local.example for details.");
         } else {
           throw new Error(data.error || "Failed to create session");
         }
@@ -109,14 +111,14 @@ export function ChatProvider({ children }: { children: React.ReactNode }) {
       setError(err instanceof Error ? err.message : "Failed to create session");
       console.error("Error creating session:", err);
     } finally {
-      setIsLoading(false);
+      setIsSessionLoading(false);
     }
   }, [loadSessions, selectSession]);
 
   // Delete a session
   const deleteSession = useCallback(async (sessionId: string) => {
     try {
-      setIsLoading(true);
+      setIsSessionLoading(true);
       setError(null);
       const response = await fetch(`/api/sessions/${sessionId}`, {
         method: "DELETE",
@@ -147,7 +149,7 @@ export function ChatProvider({ children }: { children: React.ReactNode }) {
       setError(err instanceof Error ? err.message : "Failed to delete session");
       console.error("Error deleting session:", err);
     } finally {
-      setIsLoading(false);
+      setIsSessionLoading(false);
     }
   }, [currentSession, sessions, loadSessions, selectSession]);
 
@@ -190,7 +192,7 @@ export function ChatProvider({ children }: { children: React.ReactNode }) {
       if (!response.ok) {
         // Handle quota errors specially
         if (response.status === 429 && data.isQuotaError) {
-          setError("⚠️ Google AI quota exceeded. Please wait a few minutes or get a new API key.");
+          setError(" Google AI quota exceeded. Please wait a few minutes or get a new API key.");
           return;
         }
         throw new Error(data.error || "Failed to send message");
@@ -251,6 +253,7 @@ export function ChatProvider({ children }: { children: React.ReactNode }) {
     currentSession,
     messages,
     isLoading,
+    isSessionLoading,
     error,
     loadSessions,
     createSession,

@@ -45,7 +45,7 @@ export const DEFAULT_WATER_FACTOR = DEFAULT_WATER_L_PER_KWH;
 /**
  * UI Constants
  */
-export const APP_NAME = "Digital Footprints";
+export const APP_NAME = "Ecomate";
 export const APP_DESCRIPTION = "Track the environmental impact of your AI conversations";
 export const APP_VERSION = "2.0.0";
 

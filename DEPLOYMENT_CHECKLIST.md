@@ -1,6 +1,6 @@
 # Deployment Checklist for Streamlit Cloud
 
-Follow these steps to deploy Digital Footprints to Streamlit Cloud for free.
+Follow these steps to deploy Ecomate to Streamlit Cloud for free.
 
 ## Pre-Deployment Checklist
 
@@ -209,7 +209,7 @@ Your deployment is successful when:
 
 ## Congratulations! 🎉
 
-Your Digital Footprints app is now live and persisting data!
+Your Ecomate app is now live and persisting data!
 
 Share your app URL with others to demonstrate AI environmental impact awareness.
 

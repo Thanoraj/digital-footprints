@@ -1,6 +1,6 @@
 # Migration Guide: Streamlit to Next.js
 
-This guide helps you migrate from the Streamlit version to the Next.js version of Digital Footprints.
+This guide helps you migrate from the Streamlit version to the Next.js version of Ecomate.
 
 ## Major Changes
 
@@ -260,7 +260,7 @@ No migration needed - continue using same Supabase project. Just run the schema 
 
 ### Metrics Scope
 
-⚠️ **BREAKING**: Metrics are now per-session, not global.
+ **BREAKING**: Metrics are now per-session, not global.
 
 **Impact**: Users expecting cumulative metrics across all sessions will see per-session metrics instead.
 
@@ -268,7 +268,7 @@ No migration needed - continue using same Supabase project. Just run the schema 
 
 ### Settings Scope
 
-⚠️ **BREAKING**: Settings are now per-session.
+ **BREAKING**: Settings are now per-session.
 
 **Impact**: Each session can have different model size, energy mix, and water factor.
 

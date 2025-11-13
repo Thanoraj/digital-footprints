@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Digital Footprints app now supports **multiple chat sessions**, allowing users to create, manage, and switch between different conversations - similar to ChatGPT's conversation management.
+The Ecomate app now supports **multiple chat sessions**, allowing users to create, manage, and switch between different conversations - similar to ChatGPT's conversation management.
 
 ## Features
 
@@ -12,7 +12,7 @@ The Digital Footprints app now supports **multiple chat sessions**, allowing use
 - Automatically saves to database
 - Previous chats are preserved
 
-### 💬 Multiple Sessions
+###  Multiple Sessions
 - Manage unlimited chat conversations
 - Each session has its own history
 - Sessions listed in sidebar by most recent
@@ -45,15 +45,15 @@ The Digital Footprints app now supports **multiple chat sessions**, allowing use
 
 ```
 ┌─────────────────────┐
-│ 🍃 Digital Footprints│
+│  Ecomate│
 │                      │
 │ ➕ New Chat         │ ← Create new session
 │ ──────────────────  │
-│ 💬 Chat Sessions    │
+│  Chat Sessions    │
 │                      │
 │ 🔹 Current Chat      │ ← Active session
-│ 💬 Previous Chat 🗑️ │ ← Other sessions
-│ 💬 Another Chat  🗑️ │
+│  Previous Chat 🗑️ │ ← Other sessions
+│  Another Chat  🗑️ │
 │ ...                  │
 └─────────────────────┘
 ```
@@ -62,7 +62,7 @@ The Digital Footprints app now supports **multiple chat sessions**, allowing use
 
 ```
 ┌────────────────────────────────────────┐
-│ 💬 Chat                                │
+│  Chat                                │
 │ ┌─────────────────┬─────────────────┐ │
 │ │  Chat Messages  │   Metrics &     │ │
 │ │                 │   Settings      │ │
@@ -250,7 +250,7 @@ Alternatively, write a migration script to:
 - 🔍 **Search**: Find messages across all sessions
 - 📤 **Export**: Download session as PDF/JSON
 - 🏷️ **Tags**: Categorize sessions with labels
-- 📊 **Analytics**: Session statistics and metrics
+-  **Analytics**: Session statistics and metrics
 - 🔒 **Archive**: Hide old sessions without deleting
 - ⭐ **Favorites**: Pin important conversations
 - 📋 **Copy**: Duplicate a session
@@ -280,7 +280,7 @@ Alternatively, write a migration script to:
 
 ## Summary
 
-The chat sessions feature transforms Digital Footprints from a single conversation app into a full-featured chat management system. Users can now organize multiple conversations, switch between them seamlessly, and maintain persistent history for each session - all while continuing to track the environmental impact of their AI usage.
+The chat sessions feature transforms Ecomate from a single conversation app into a full-featured chat management system. Users can now organize multiple conversations, switch between them seamlessly, and maintain persistent history for each session - all while continuing to track the environmental impact of their AI usage.
 
 This brings the app's UX in line with modern AI chat applications while maintaining its unique environmental awareness focus.
 

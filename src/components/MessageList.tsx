@@ -23,8 +23,8 @@ export function MessageList() {
     return (
       <div className="flex h-full items-center justify-center p-8">
         <div className="text-center space-y-3">
-          <div className="text-6xl">🍃</div>
-          <h3 className="text-lg font-semibold">Start a Conversation</h3>
+          <div className="text-6xl"></div>
+          <h3 className="text-lg font-semibold">What can I help you with?</h3>
           <p className="text-sm text-muted-foreground max-w-md">
             Ask me anything and see the environmental impact of your AI conversation in real-time.
           </p>
@@ -46,21 +46,21 @@ export function MessageList() {
             )}
           >
             {message.role === "assistant" && (
-              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-eco-100 dark:bg-eco-900 flex items-center justify-center">
-                <Bot className="h-5 w-5 text-eco-600 dark:text-eco-400" />
+              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center">
+                <Bot className="h-5 w-5 text-eco-600 dark:text-primary" />
               </div>
             )}
 
             <div
               className={cn(
-                "max-w-[80%] rounded-lg px-4 py-2 shadow-sm border",
+                "max-w-[80%] rounded-lg px-4 py-2 shadow-sm",
                 message.role === "user"
-                  ? " border-primary/10"
-                  : "bg-card border-border"
+                  ? "bg-primary/5"
+                  : "bg-primary/15"
               )}
             >
               {message.role === "assistant" ? (
-                <div className="prose prose-sm dark:prose-invert max-w-none prose-p:my-2 prose-ul:my-2 prose-li:my-1">
+                <div className="prose prose-sm dark:prose-invert max-w-none prose-p:my-2 prose-ul:my-2 prose-li:my-1 ">
                   <ReactMarkdown remarkPlugins={[remarkGfm]}>
                     {message.content}
                   </ReactMarkdown>
@@ -82,10 +82,10 @@ export function MessageList() {
 
         {isLoading && (
           <div className="flex gap-3 justify-start animate-slide-in">
-            <div className="flex-shrink-0 w-8 h-8 rounded-full bg-eco-100 dark:bg-eco-900 flex items-center justify-center">
-              <Bot className="h-5 w-5 text-eco-600 dark:text-eco-400" />
-            </div>
-            <div className="max-w-[80%] rounded-lg p-4 bg-card border border-border">
+              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center">
+                <Bot className="h-5 w-5 text-eco-600 dark:text-primary" />
+              </div>
+            <div className="max-w-[80%] rounded-lg p-4 bg-primary/10">
               <div className="flex gap-1">
                 <div className="w-2 h-2 rounded-full bg-primary/60 animate-bounce" />
                 <div className="w-2 h-2 rounded-full bg-primary/60 animate-bounce delay-100" />
