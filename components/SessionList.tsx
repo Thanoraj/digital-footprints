@@ -42,7 +42,7 @@ export function SessionList() {
 
   return (
     <Card className="flex h-full flex-col border-r">
-      <div className="p-4">
+      <div className="p-2">
         <div className="flex items-center justify-between gap-2 mb-4">
           <h2 className="text-lg font-semibold flex items-center gap-2">
             <span className="text-2xl">🍃</span>
@@ -50,7 +50,7 @@ export function SessionList() {
           </h2>
         </div>
 
-        <div className="flex gap-2">
+        <div className="flex">
           <Button
             data-testid="new-session-button"
             onClick={handleNewSession}
@@ -61,7 +61,7 @@ export function SessionList() {
             <Plus className="h-4 w-4" />
             New Chat
           </Button>
-          <Button
+          {/* <Button
             data-testid="refresh-sessions-button"
             onClick={loadSessions}
             disabled={isLoading}
@@ -69,7 +69,7 @@ export function SessionList() {
             size="sm"
           >
             <RefreshCw className={cn("h-4 w-4", isLoading && "animate-spin")} />
-          </Button>
+          </Button> */}
         </div>
       </div>
 

@@ -53,9 +53,9 @@ export function MessageList() {
 
             <div
               className={cn(
-                "max-w-[80%] rounded-lg p-4 shadow-sm border",
+                "max-w-[80%] rounded-lg px-4 py-2 shadow-sm border",
                 message.role === "user"
-                  ? "bg-primary text-primary-foreground border-primary"
+                  ? " border-primary/10"
                   : "bg-card border-border"
               )}
             >
